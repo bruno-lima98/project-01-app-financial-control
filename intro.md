@@ -39,7 +39,7 @@ O input de entrada de uma transação deve possuir algumas informações para re
 | fonte      | string | sim         | lista                       |
 | valor      | float  | sim         | livre (float positivo)      |
 
-## 3.2. Lista de Campos
+## 3.2. Lista de Valores
 
 Para os campos que são do formato lista, as opções em cada lista são definidas a seguir.
 
@@ -66,7 +66,6 @@ Para os campos que são do formato lista, as opções em cada lista são definid
 - Compra Padrão
 - Comida Cozinhar
 - Farmácia
-- Aluguel
 - Din Jac
 - Role
 - Compra Online
@@ -110,7 +109,6 @@ Algumas regras devem ser aplicadas nas entradas.
 | Compra Padrão                | Saída                                  |
 | Comida Cozinhar              | Saída                                  |
 | Farmácia                     | Saída                                  |
-| Aluguel                      | Saída                                  |
 | Din Jac                      | Saída                                  |
 | Role                         | Saída                                  |
 | Compra Online                | Saída                                  |
