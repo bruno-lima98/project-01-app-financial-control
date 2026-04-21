@@ -24,6 +24,11 @@ Um app simples com o objetivo de registrar inputs transacionais do usuário, de 
 - **Ação:** Filtrar as informações que serão consultadas.
 - **Objetivo:** Conseguir recortar visualizações específicas, tanto por data quanto por categorias ou o que fizer mais sentido.
 
+### Uso 5:
+- **Usuário:** Usuário do App
+- **Ação:** Deletar alguma transação lançada no banco de dados.
+- **Objetivo:** Conseguir remover algumas transação selecionada, removendo do banco de dados e estatísticas.
+
 # 3. Regras de Negócio 
 
 O input de entrada de uma transação deve possuir algumas informações para registro no banco de dados.
@@ -122,3 +127,30 @@ Algumas regras devem ser aplicadas nas entradas.
 | Investimento Internacional   | Investimento Internacional             |
 | Reserva de Emergência        | Reserva In (saldo) ou Reserva Out (débito) |
 | Reserva Adicional            | Reserva In (saldo) ou Reserva Out (débito) |
+
+# 4. Estrutura do Projeto
+
+Pensando na estrutura do repositório e do app, é necessário desenhar os arquivos que irão compor a estrutura final. Dessa forma podemos listar os principais arquivos python que teremos e suas respectivas funções:
+
+- **main.py:** ponto de entrada e orquestrador do app.
+- **cli.py:** componentes que tem interação com o usuário.
+- **models.py:** modelos das transações de entradas.
+- **storage.py:** componentes para modos de armazenamento das informações. 
+- **analyzer.py:** arquivo para o cálculo de estatísticas.
+- **tests/:** folder para armazenamento de todos os testes do projeto.
+
+```
+project-01-app-financial-control/
+├── README.md
+├── docs/
+│   ├── intro.md
+├── main.py
+├── cli.py
+├── models.py
+├── storage.py
+├── analyzer.py
+├── tests/
+│   ├── test_models.py
+│   ├── test_storage.py
+│   ├── test_analyzer.py
+```
