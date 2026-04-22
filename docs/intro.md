@@ -45,7 +45,7 @@ O input de entrada de uma transação deve possuir algumas informações para re
 | id         | string | sim         | automático (uuid)           |
 | data       | date   | sim         | date                        |
 | tipo       | string | sim         | lista                       |
-| descrição  | string | não         | livre                       |
+| descricao  | string | não         | livre                       |
 | categoria  | string | sim         | lista                       |
 | fonte      | string | sim         | lista                       |
 | valor      | float  | sim         | livre (float positivo)      |
@@ -55,48 +55,48 @@ O input de entrada de uma transação deve possuir algumas informações para re
 Para os campos que são do formato lista, as opções em cada lista são definidas a seguir.
 
 **a) tipo:**
-- Entrada
-- Saída
-- Investimento 
-- Investimento Internacional
-- Reserva In
-- Reserva Out
+- entrada
+- saida
+- investimento 
+- investimento_internacional
+- reserva_in
+- reserva_out
 
 **b) categoria:**
-- Salário
-- Vale Refeição
-- Vale Alimentação
-- Saldo Livre
-- Saldo Mobilidade
-- Aluguel
-- Mercado
-- Uber
-- Viagem
-- Ifood
-- Comida Fora
-- Compra Padrão
-- Comida Cozinhar
-- Farmácia
-- Din Jac
-- Role
-- Compra Online
-- Transporte
-- Streaming
-- Atividade Física
-- Lazer
-- Suplementos
-- Outros
-- Investimento
-- Investimento Internacional
-- Reserva de Emergência
-- Reserva Adicional
+- salario
+- vale_refeicao
+- vale_alimentacao
+- saldo_livre
+- saldo_mobilidade
+- aluguel
+- mercado
+- uber
+- viagem
+- ifood
+- comida_fora
+- compra_padrao
+- comida_cozinhar
+- farmacia
+- din_jac
+- role
+- compra_online
+- transporte
+- streaming
+- atividade_fisica
+- lazer
+- suplementos
+- outros
+- investimento
+- investimento_internacional
+- reserva_de_emergencia
+- reserva_adicional
 
 **c) fonte**
-- Dinheiro
-- Vale Refeição
-- Vale Alimentação
-- Saldo Livre
-- Saldo Mobilidade
+- dinheiro
+- vale_refeicao
+- vale_alimentacao
+- saldo_livre
+- saldo_mobilidade
 
 ## 3.3. Relacionamento em Campos
 
@@ -106,33 +106,33 @@ Algumas regras devem ser aplicadas nas entradas.
 
 | Categoria                     | Tipo                                  |
 |-------------------------------|----------------------------------------|
-| Salário                      | Entrada                                |
-| Vale Refeição                | Entrada                                |
-| Vale Alimentação             | Entrada                                |
-| Saldo Livre                  | Entrada                                |
-| Saldo Mobilidade             | Entrada                                |
-| Aluguel                      | Saída                                  |
-| Mercado                      | Saída                                  |
-| Uber                         | Saída                                  |
-| Viagem                       | Saída                                  |
-| Ifood                        | Saída                                  |
-| Comida Fora                  | Saída                                  |
-| Compra Padrão                | Saída                                  |
-| Comida Cozinhar              | Saída                                  |
-| Farmácia                     | Saída                                  |
-| Din Jac                      | Saída                                  |
-| Role                         | Saída                                  |
-| Compra Online                | Saída                                  |
-| Transporte                   | Saída                                  |
-| Streaming                    | Saída                                  |
-| Atividade Física             | Saída                                  |
-| Lazer                        | Saída                                  |
-| Suplementos                  | Saída                                  |
-| Outros                       | Saída                                  |
-| Investimento                 | Investimento                           |
-| Investimento Internacional   | Investimento Internacional             |
-| Reserva de Emergência        | Reserva In (saldo) ou Reserva Out (débito) |
-| Reserva Adicional            | Reserva In (saldo) ou Reserva Out (débito) |
+| salario                      | entrada                                |
+| vale_refeicao                | entrada                                |
+| vale_alimentacao             | entrada                                |
+| saldo_livre                  | entrada                                |
+| saldo_mobilidade             | entrada                                |
+| aluguel                      | saida                                  |
+| mercado                      | saida                                  |
+| uber                         | saida                                  |
+| viagem                       | saida                                  |
+| ifood                        | saida                                  |
+| comida_fora                  | saida                                  |
+| compra_padrao                | saida                                  |
+| comida_cozinhar              | saida                                  |
+| farmacia                     | saida                                  |
+| din_jac                      | saida                                  |
+| role                         | saida                                  |
+| compra_online                | saida                                  |
+| transporte                   | saida                                  |
+| streaming                    | saida                                  |
+| atividade_fisica             | saida                                  |
+| lazer                        | saida                                  |
+| suplementos                  | saida                                  |
+| outros                       | saida                                  |
+| investimento                 | investimento                           |
+| investimento_internacional   | investimento_internacional             |
+| reserva_de_emergencia        | reserva_in (saldo) ou reserva_out (débito) |
+| reserva_adicional            | reserva_in (saldo) ou reserva_out (débito) |
 
 # 4. Estrutura do Projeto
 
