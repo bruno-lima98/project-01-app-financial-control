@@ -42,6 +42,7 @@ O input de entrada de uma transação deve possuir algumas informações para re
 
 | Campo      | Tipo   | Obrigatório | Formato                     |
 |------------|--------|-------------|-----------------------------|
+| id         | string | sim         | automático (uuid)           |
 | data       | date   | sim         | date                        |
 | tipo       | string | sim         | lista                       |
 | descrição  | string | não         | livre                       |
