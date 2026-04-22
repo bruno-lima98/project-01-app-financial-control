@@ -144,19 +144,22 @@ Pensando na estrutura do repositório e do app, é necessário desenhar os arqui
 - **storage.py:** componentes para modos de armazenamento das informações. 
 - **analyzer.py:** arquivo para o cálculo de estatísticas.
 - **tests/:** folder para armazenamento de todos os testes do projeto.
+- **data/:** folder para armazenamento de todos os arquivos de dados.
 
 ```
 project-01-app-financial-control/
-├── README.md
+├── data/
+│   ├── data.csv
 ├── docs/
 │   ├── intro.md
-├── main.py
-├── cli.py
-├── models.py
-├── storage.py
-├── analyzer.py
 ├── tests/
 │   ├── test_models.py
 │   ├── test_storage.py
 │   ├── test_analyzer.py
+├── analyzer.py
+├── cli.py
+├── main.py
+├── models.py
+├── README.md
+├── storage.py
 ```
