@@ -1,6 +1,8 @@
 from dataclasses import dataclass, field
 from uuid import uuid4
 import unicodedata
+import re
+from datetime import datetime
 
 # Criando a classe de transação para uso no projeto
 
@@ -22,7 +24,16 @@ class Transacao:
     def normalizar(texto):
         return unicodedata.normalize("NFD", texto).encode("ascii", "ignore").decode("utf-8").lower().replace(" ", "_")
     
+    # Normalização de entrada do campo date:
+    @staticmethod
+    def normalizar_data(texto):
+        padrao_barra = r"^\d{2}/\d{2}/(?:\d{2}|\d{4})$"
+        if re.match(padrao_barra, texto):
+            return datetime.strptime(texto, "%d/%m/%Y").strftime("%Y-%m-%d")
+    
     def __post_init__(self):
+        self.data = Transacao.normalizar_data(self.data)
         self.tipo = Transacao.normalizar(self.tipo)
         self.categoria = Transacao.normalizar(self.categoria)
         self.fonte = Transacao.normalizar(self.fonte)
+
