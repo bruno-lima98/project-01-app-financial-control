@@ -27,7 +27,12 @@ Um app simples com o objetivo de registrar inputs transacionais do usuário, de 
 ### Uso 5:
 - **Usuário:** Usuário do App
 - **Ação:** Deletar alguma transação lançada no banco de dados.
-- **Objetivo:** Conseguir remover algumas transação selecionada, removendo do banco de dados e estatísticas.
+- **Objetivo:** Conseguir remover alguma transação selecionada, removendo do banco de dados e estatísticas.
+
+### Uso 6:
+- **Usuário:** Usuário do App
+- **Ação:** Atualizar alguma transação lançada no banco de dados.
+- **Objetivo:** Conseguir atualizar alguma transação selecionada, removendo do banco de dados e estatísticas sem necessidade de remoção para nova inserção.
 
 # 3. Regras de Negócio 
 
