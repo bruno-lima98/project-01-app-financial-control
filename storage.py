@@ -7,7 +7,7 @@ from models import Transacao
 # 1 - salvar_transacao: salva uma transação nova no banco de dados
 # 2 - carregar_transacoes: retorna todas as transações salvas no banco de dados
 # 3 - deletar_transacoes: seleciona uma transação (via uuid) e remove do banco de dados
-# 4 - atualizar_transacoes:
+# 4 - atualizar_transacoes: atualiza uma transação selecionada (via uuidd). É necessário passar a transação completa atualizada.
 
 def salvar_transacao(transacao):
     # Local onde ficarão os arquivos:
@@ -58,6 +58,21 @@ def deletar_transacoes(id):
         dados_atual = carregar_transacoes("data.csv")
         saida = [row for row in dados_atual if row.id != id]
         salvar_todas(saida)
+
+
+def atualizar_transacoes(id, transacao_nova):
+    file_path = "data/data.csv"
+
+    if not os.path.exists(file_path):
+        return print("Sem arquivo CSV.")
+    else:
+        dados_atual = carregar_transacoes("data.csv")
+        for i, row in enumerate(dados_atual):
+            if row.id == id:
+                dados_atual[i] = transacao_nova
+            else:
+                continue
+        salvar_todas(dados_atual)
 
 
 # FUNÇÕES AUXILIARES DO APP:
