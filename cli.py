@@ -1,8 +1,10 @@
 import re
 from datetime import datetime
+from models import Transacao
+from storage import salvar_transacao
 
 def menu_inicial():
-    print(" CONSOLE FINANCEIRO v1.0 ".center(50, "="))
+    print(" CONSOLE FINANCEIRO v1.0 ".center(80, "="))
     print("""
 [1] Acessar transações gerais
 [2] Acessar estatísticas financeiras
@@ -33,7 +35,7 @@ def menu_inicial():
     
 
 def menu_estatistica():
-    print(" 2. ESTATÍSTICAS FINACEIRAS ".center(50, "="))
+    print(" 2. ESTATÍSTICAS FINACEIRAS ".center(80, "="))
     print("""
 [1] Resumo por tipo de transação
 [2] Resumo por categoria de transações
@@ -61,7 +63,7 @@ def menu_estatistica():
 
 
 def menu_edicao():
-    print(" 4. EDIÇÃO DE TRANSAÇÕES ".center(50, "="))
+    print(" 4. EDIÇÃO DE TRANSAÇÕES ".center(80, "="))
     print("""
 [1] Atualizar transação
 [2] Deletar transação
@@ -90,7 +92,7 @@ def listar_transacoes():
 def registrar_transacao():
     
     ## Validação da data:
-    print(" 3.1. DATA ".center(50, "="))
+    print(" 3.1. DATA ".center(80, "="))
     while True:
        data = input("Data: ").strip()
        validar = validar_data(data)
@@ -99,7 +101,7 @@ def registrar_transacao():
     print()
 
     ## Validação de tipo:
-    print(" 3.2. TIPO ".center(50, "="))
+    print(" 3.2. TIPO ".center(80, "="))
     print("""[1] Entrada
 [2] Saída
 [3] Investimento
@@ -118,8 +120,70 @@ def registrar_transacao():
                 break
     print()
 
+    ## Validação de categoria:
+    print(" 3.3. DESCRIÇÃO ".center(80, "="))
+    print("Descreva a sua transação.")
+    descricao = input("Descrição: ").strip()
+    print()
 
-    return print(data, tipo)
+    ## Validação de categoria:
+    print(" 3.4. CATEGORIA ".center(80, "="))
+    print(f"""{'[1] Salário':<24} {'[10] Ifood':<24} {'[19] Atividade Física':<24}
+{'[2] Vale Refeição':<24} {'[11] Comida Fora':<24} {'[20] Lazer':<24}
+{'[3] Vale Alimentação':<24} {'[12] Comida p/ Cozinhar':<24} {'[21] Suplementos':<24}
+{'[4] Saldo Livre ':<24} {'[13] Compra Online':<24} {'[22] Dinheiro Jac':<24}
+{'[5] Saldo Mobilidade':<24} {'[14] Compra Padrão':<24} {'[23] Investimento':<24}
+{'[6] Aluguel':<24} {'[15] Farmácia':<24} {'[24] Investimento Internacional':<24}
+{'[7] Mercado':<24} {'[16] Role':<24} {'[25] Reserva de Emergência':<24}
+{'[8] Streaming':<24} {'[17] Transporte':<24} {'[26] Reserva Adicional':<24}
+{'[9] Viagem':<24} {'[18] Uber':<24} {'[27] Outros':<24}
+          """)
+    while True:
+        try:
+            categoria = int(input("Categoria: ").strip())
+        except ValueError:
+            print("Formato inválido de entrada.")
+        else:
+            validar, categoria = validar_categoria(categoria)
+            if validar == True:
+                break
+    print()
+
+    ## Validação de fonte:
+    print(" 3.5. FONTE DA TRANSAÇÃO ".center(80, "="))
+    print("""[1] Dinheiro
+[2] Vale Refeição
+[3] Vale Alimentação
+[4] Saldo Livre
+[5] Saldo Mobilidade
+          """)
+    while True:
+        try:
+            fonte = int(input("Tipo: ").strip())
+        except ValueError:
+            print("Formato inválido de entrada.")
+        else:
+            validar, fonte = validar_fonte(fonte)
+            if validar == True:
+                break
+    print()
+
+    ## Validação de fonte:
+    print(" 3.6. VALOR DA TRANSAÇÃO ".center(80, "="))
+    print("Especifique o valor da sua transação.")
+    while True:
+        try:
+            valor = float(input("Valor (R$): ").strip())
+        except ValueError:
+            print("Formato inválido de entrada.")
+        else:
+            break
+    print()
+
+    salvar_transacao(Transacao(data, tipo, categoria, fonte, valor, descricao=descricao))
+    print("Sua transação foi registrada no banco de dados.")
+    print(f"{data} | {tipo} | {descricao} | {categoria} | {fonte} | {valor}")
+    return
 
 
 def validar_data(data):
@@ -180,16 +244,51 @@ def validar_data(data):
 
 def validar_tipo(tipo):
     tipos = {
-        1: "Entrada",
-        2: "Saída",
-        3: "Investimento",
-        4: "Investimento Internacional", 
-        5: "Reserva IN",
-        6: "Reserva OUT"       
+        1: "entrada",
+        2: "saida",
+        3: "investimento",
+        4: "investimento_internacional", 
+        5: "reserva_in",
+        6: "reserva_out"       
         }
     
-    if tipo in [1, 2, 3, 4, 5, 6]:
+    if tipo in tipos:
         return True, tipos[tipo]
+    else:
+        print("Opção inválida.")
+        return False, None
+    
+
+def validar_categoria(categoria):
+    categorias = {
+        1: "salario", 10: "ifood", 19:"atividade_fisica",
+        2: "vale_refeicao", 11: "comida_fora", 20:"lazer",
+        3: "vale_alimentacao", 12: "comida_para_cozinhar", 21:"suplementos",
+        4: "saldo_livre", 13: "compra_online", 22:"dinheiro_jac",
+        5: "saldo_mobilidade", 14: "compra_padrao", 23:"investimento",
+        6: "aluguel", 15: "farmacia", 24:"investimento_internacional",
+        7: "mercado", 16: "role", 25:"reserva_de_emergencia",
+        8: "streaming", 17: "transporte", 26:"reserva_adicional",
+        9: "viagem", 18: "uber", 27:"outros",
+    }
+    if categoria in categorias:
+        return True, categorias[categoria]
+    else:
+        print("Opção inválida.")
+        return False, None
+    
+
+def validar_fonte(fonte):
+    fontes = {
+        1: "dinheiro",
+        2: "vale_refeicao",
+        3: "vale_alimentacao",
+        4: "saldo_livre", 
+        5: "saldo_mobilidade",      
+        }
+    
+    if fonte in fontes:
+        return True, fontes[fonte]
     else:
         print("Opção inválida.")
         return False, None
