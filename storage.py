@@ -31,11 +31,11 @@ def salvar_transacao(transacao):
             writer.writerow(entrada)
 
 
-def carregar_transacoes(arquivo):
-    file_path = f"data/{arquivo}"
+def carregar_transacoes():
+    file_path = f"data/data.csv"
 
     if os.path.exists(file_path): 
-        with open("data/data.csv", "r", encoding="utf-8") as file:
+        with open(file_path, "r", encoding="utf-8") as file:
             reader = csv.reader(file)
             header = next(reader) # Armazena o cabeçalho e remove dos dados
             
